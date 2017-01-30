@@ -19,7 +19,13 @@ public class JavaFXDemoApp1 extends Application {
         Button button = new Button();
         button.setText("Click Me");
         button.addEventHandler(ActionEvent.ACTION,
-                               new MyButtonEventHandler());
+            // Anonymous inner class
+            new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    ((Button) event.getSource()).setText("Thank you");
+                }
+            });
 
         StackPane root = new StackPane();
         root.getChildren().add(button);
@@ -34,18 +40,4 @@ public class JavaFXDemoApp1 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-}
-
-class MyButtonEventHandler implements EventHandler<ActionEvent> {
-    // Observer
-    
-    int clickcounter = 0;
-            
-    @Override
-    public void handle(ActionEvent event) {
-        clickcounter++;
-        ((Button) event.getSource()).setText("You clicked " + 
-                clickcounter + " times");
-    }
-    
 }
