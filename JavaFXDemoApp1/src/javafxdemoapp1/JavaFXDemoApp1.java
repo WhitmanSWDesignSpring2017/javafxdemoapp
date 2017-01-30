@@ -21,7 +21,7 @@ public class JavaFXDemoApp1 extends Application {
         button.addEventHandler(ActionEvent.ACTION, 
             // Lambda - an anonymous function
             (ActionEvent event) -> {
-                ((Button) event.getSource()).setText("Thank you");
+                button.setText("Thank you");
             });
 
         StackPane root = new StackPane();
