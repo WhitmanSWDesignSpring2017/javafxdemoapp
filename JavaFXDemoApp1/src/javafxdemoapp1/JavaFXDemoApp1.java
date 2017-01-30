@@ -18,11 +18,7 @@ public class JavaFXDemoApp1 extends Application {
     public void start(Stage primaryStage) {
         Button button = new Button();
         button.setText("Click Me");
-        button.addEventHandler(ActionEvent.ACTION, 
-            // Lambda - an anonymous function
-            (ActionEvent event) -> {
-                button.setText("Thank you");
-            });
+        button.setOnAction(event -> button.setText("Thank you!"));
 
         StackPane root = new StackPane();
         root.getChildren().add(button);
