@@ -18,13 +18,10 @@ public class JavaFXDemoApp1 extends Application {
     public void start(Stage primaryStage) {
         Button button = new Button();
         button.setText("Click Me");
-        button.addEventHandler(ActionEvent.ACTION,
-            // Anonymous inner class
-            new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    ((Button) event.getSource()).setText("Thank you");
-                }
+        button.addEventHandler(ActionEvent.ACTION, 
+            // Lambda - an anonymous function
+            (ActionEvent event) -> {
+                ((Button) event.getSource()).setText("Thank you");
             });
 
         StackPane root = new StackPane();
