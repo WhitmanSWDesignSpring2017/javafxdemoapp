@@ -6,6 +6,8 @@
 package javafxdemoapp;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -16,6 +18,8 @@ public class JavaFXDemoApp1 extends Application {
     public void start(Stage primaryStage) {
         Button button = new Button();
         button.setText("Click Me");
+        button.addEventHandler(ActionEvent.ACTION,
+                               new MyButtonEventHandler());
 
         StackPane root = new StackPane();
         root.getChildren().add(button);
@@ -30,4 +34,18 @@ public class JavaFXDemoApp1 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+}
+
+class MyButtonEventHandler implements EventHandler<ActionEvent> {
+    // Observer
+    
+    int clickcounter = 0;
+            
+    @Override
+    public void handle(ActionEvent event) {
+        clickcounter++;
+        ((Button) event.getSource()).setText("You clicked " + 
+                clickcounter + " times");
+    }
+    
 }
